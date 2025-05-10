@@ -1,5 +1,4 @@
 name: Build, Test, and Deploy to AWS EC2
-
 on:
   push:
     branches:
