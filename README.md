@@ -56,6 +56,16 @@ sudo groupadd docker
 sudo usermod -a -G docker ec2-user
 newgrp docker
 docker —-version
+
 # MUST STEP create ECR with name: my-mlapp
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 866824485776.dkr.ecr.us-east-1.amazonaws.com
 ```
+
+# GIT ACTIONS SECRETS
+AWS_ACCESS_KEY_ID - Create a Key pair in your IAM User (sivabalan in AWS console - but this will be displayed as ec2-user in AWS CLI)
+AWS_SECRET_ACCESS_KEY - Corresponding Secret key
+AWS_ACCOUNT_ID - You AWS account ID
+AWS_REGION - Your AWS region
+EC2_HOST - public address ipv4 DNS from EC2 instance
+EC2_SSH_KEY - Pre-empt to all SSH Key pair to connect to EC2 instance
+EC2_USERNAME - (username - sivabalan) but used as ec2-server (default in aws cli)

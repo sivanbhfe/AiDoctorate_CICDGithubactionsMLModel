@@ -1,4 +1,5 @@
 name: Build, Test, and Deploy to AWS EC2
+
 on:
   push:
     branches:
@@ -46,6 +47,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp:latest
-            docker stop my-mlapp || true # In case the container doesn't exist yet
-            docker rm my-mlapp || true
             docker run -d -p 80:8005 --name my-mlapp ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp:latest
