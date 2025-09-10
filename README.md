@@ -69,3 +69,9 @@ AWS_REGION - Your AWS region
 EC2_HOST - public address ipv4 DNS from EC2 instance
 EC2_SSH_KEY - Pre-empt to all SSH Key pair to connect to EC2 instance
 EC2_USERNAME - (username - sivabalan) but used as ec2-server (default in aws cli)
+
+# Restarting application
+- Create new Ec2, Update EC2 IP in EC2_HOST parameter in Github actions Secrets
+- Create new ECR Repository - Use the same name used in actions.yml file
+- If you have deleted user/xxx/Access key pair, then recreate Access Key-Secret key pair and update the same in Github actions Secrets (AWS_Access_KEY, AWS_SECRET_KEY)
+- If you are creating new SSH Public Key pair then update that as well
