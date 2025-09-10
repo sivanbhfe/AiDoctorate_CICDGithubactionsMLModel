@@ -40,7 +40,6 @@ jobs:
           docker tag my-mlapp-three:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp-three:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp-three:latest    
           
-
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
