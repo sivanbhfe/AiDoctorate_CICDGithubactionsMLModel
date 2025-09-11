@@ -39,7 +39,11 @@ jobs:
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
           docker tag my-mlapp-three:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp-three:latest
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/my-mlapp-three:latest    
-       
+      - name: Debug network
+        run: |
+          ping -c 3 ${{ secrets.EC2_HOST }} || true
+          nc -zv ${{ secrets.EC2_HOST }} 22 || true
+          
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
